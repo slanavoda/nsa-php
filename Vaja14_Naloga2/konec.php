@@ -10,4 +10,5 @@
     } else if ($_COOKIE['runda'] >= 3) {
         echo 'Matematika ti ni ravno domača!';
     }
+    echo '<br><a href="index.php?x=1">Domov</a>';
 ?>
