@@ -1,8 +1,4 @@
 <?php
-    echo '<pre>';
-    print_r($_FILES);
-    echo '</pre>';
-
     foreach ($_FILES['file']['tmp_name'] as $k => $temp) {
         if (file_exists('besedila/'.$_FILES['file']['name'][$k]) && $_POST['prepisi'] == "1") {
             chmod('besedila/'.$_FILES['file']['name'][$k], 0755);
@@ -12,4 +8,6 @@
         }
         move_uploaded_file($temp, "besedila/".$_FILES['file']['name'][$k]);
     }
+
+    header('Location: index.php');
 ?>
