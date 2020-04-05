@@ -1,4 +1,11 @@
 <?php
+    if (!isset($_COOKIE['i'])) {
+        setcookie('i', '0', time()+3600, '/');
+        header('Refresh: 0');
+    }
+    if ($_COOKIE['i'] == '10') {
+        header('Location: rezultat.php');
+    }
     include('seznamDrzav.php');
     $tabelaDrzav = array();
 
