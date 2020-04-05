@@ -1,3 +1,4 @@
+<a href="vnosKrajaForm.php">Vnos kraja v PB</a><br>
 <?php
 	$conn = mysqli_connect("localhost:3306", "root", "", "baza1") or die("Napaka!");
 	$query = "select * from kraj order by imeKraja";
