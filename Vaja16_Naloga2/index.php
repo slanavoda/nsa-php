@@ -10,7 +10,6 @@
 
     $steviloDrzav = count($tabelaDrzav);
     $random = rand(1, $steviloDrzav) - 1;
-    setcookie('drzava', $tabelaDrzav[$random][1], time()+3600)
 ?>
 <datalist id="celine">
     <?php
@@ -21,7 +20,7 @@
 </datalist>
 <form action="preveri.php" method="post">
     <?php
-        echo "Država: <input type='text' value='".$tabelaDrzav[$random][1]."' name='drzava' disabled><br>";
+        echo "Država: <input type='text' value='".$tabelaDrzav[$random][1]."' name='drzava' readonly><br>";
     ?>
     Celina: <input type="text" list="celine" name="celina" required>
     <input type="submit" value="Preveri!">

@@ -1,10 +1,6 @@
 <?php
-    $drzava1 = $_COOKIE['drzava'];
+    $drzava1 = $_POST['drzava'];
     $celina1 = $_POST['celina'];
-
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
 
     include('seznamDrzav.php');
     foreach ($seznamDrzav1 as $celina => $drzave) {

@@ -562,5 +562,4 @@ $seznamDrzav2 = array(
 		"US" => "Združene države Amerike"
 	)
 );
-
 ?>
