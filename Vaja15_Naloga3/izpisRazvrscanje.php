@@ -1,4 +1,8 @@
 <?php
+    if (!isset($_POST['s'])) {
+        header('Location: izpisRazvrscanjeForm.php');
+    }
+
     $conn = mysqli_connect("localhost:3306", "root", "", "baza1") or die("Napaka pri povezavi s strežnikom");
     if (!isset($_POST['sort'])) {
         $query = "select * from oseba";
