@@ -1,7 +1,8 @@
 <?php
-    /*if (!isset($_POST['loto']) || $_SESSION['login'] != 'OK') {
+    session_start();
+    if (!isset($_SESSION['login'])) {
         header('Location: index.php');
-    }*/
+    }
 
     $st1 = rand(1, 10);
     $st2 = rand(1, 10);

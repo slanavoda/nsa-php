@@ -1,13 +1,16 @@
 <?php
+    session_start();
     if (!($_SESSION['login'] == "OK")) {
         header('prijavaForm.php');
     }
-    session_start();
     $conn = mysqli_connect("localhost:3306", "root", "", "loto") or die("Napaka pri povezavi s stražnikom!");
     $query = "select stanjeNaRacunu from Uporabniki where email='".$_SESSION['email']."'";
     $rs = mysqli_query($conn, $query) or die("Napaka pri poizvedbi!");
     $stanje = mysqli_fetch_assoc($rs);
     echo "Stanje: ".$stanje['stanjeNaRacunu']." EUR ";
+    if (($stanje['stanjeNaRacunu'] * 1) <= 0) {
+        header("Location: zguba.php");
+    }
     echo '<a href="odjava.php">Odjava</a><br>';
 ?>
 <form action="zrebanje.php" method="post">

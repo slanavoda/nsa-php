@@ -1,6 +1,8 @@
 <?php
     session_start();
-    unset($_SESSION);
+    foreach($_SESSION as $k => $d) {
+        unset($_SESSION[$k]);
+    }
     session_destroy();
-    header('prijavaForm.php');
+    header('Location: prijavaForm.php');
 ?>

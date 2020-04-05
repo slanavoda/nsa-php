@@ -1,0 +1,5 @@
+create table Igra (email varchar(20), zapStZrebanja INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, dobicekIzguba int(10));
+
+create table Zrebanje (zapSt INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, datumCase timestamp, st1 int(10), st2 int(10), st3 int(10), st4 int(10));
+
+create table Uporabniki ( email varchar(20) , geslo varchar(128), datumCasRegistracije timestamp, stanjeNaRacunu int(5) , datumCasZadnjiLogin timestamp);
