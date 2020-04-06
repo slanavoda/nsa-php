@@ -7,16 +7,22 @@
     $query = "select geslo from Uporabniki where email = '".$_POST['email']."'";
     $rs = mysqli_query($conn, $query) or die("Napaka pri poizvedbi!");
 
-    while ($line = mysqli_fetch_assoc($rs)) {
-        if (password_verify($_POST['geslo'], $line['geslo'])) {
-            session_start();
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['login'] = "OK";
-            mysqli_close($conn);
-            header("Location: index.php");
-        } else {
-            mysqli_close($conn);
-            header("Location: prijavaForm.php");
-        }
+    if (mysqli_num_rows($rs) == 0) {
+        header("Location: prijavaForm.php");
+    }
+
+    $line = mysqli_fetch_assoc($rs);
+    if (password_verify($_POST['geslo'], $line['geslo'])) {
+        $query = "update Uporabniki set datumCasZadnjiLogin='".date("Y-m-d h:i:s")."' where uIme='".$_POST['uIme']."'";
+        mysqli_query($conn, $query) or die("Napaka pri poizvedbi 2!");
+        mysqli_close($conn);
+        session_start();
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['login'] = "OK";
+        mysqli_close($conn);
+        header("Location: index.php");
+    } else {
+        mysqli_close($conn);
+        header("Location: prijavaForm.php");
     }
 ?>
