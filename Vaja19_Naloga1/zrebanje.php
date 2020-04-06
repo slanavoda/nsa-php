@@ -14,16 +14,25 @@
     $rs = mysqli_query($conn, $query) or die("Napaka pri poizvedbi 1!");
     $line = mysqli_fetch_assoc($rs);
     $stanje = $line['stanjeNaRacunu'] * 1;
+    $minus = 0;
+    $plus = 0;
 
     foreach ($_POST['loto'] as $stevilka) {
-        $stanje = $stanje - 5;
+        $minus = $minus - 5;
         if ($stevilka == $st1 || $stevilka == $st2 || $stevilka == $st3 || $stevilka == $st4) {
-            $stanje = $stanje + 7;
+            $plus = $plus + 7;
         }
     }
 
-    $razlika = $stanje - $line['stanjeNaRacunu'] * 1;
-    $novoStanje = $stanje*1 + $razlika*1;
+    if (($stanje + $minus) < 0) {
+        die('Nimaš zadosti denarja za ta loto listek. Izberi drugačnega, prosim. <br><a href="index.php">Domov</a>');
+    }
+
+    $stanje = $stanje + $minus;
+    $stanje = $stanje + $plus;
+
+    $razlika = $stanje - ( $line['stanjeNaRacunu'] * 1 );
+    $novoStanje = $stanje + $razlika;
 
     $query = "update Uporabniki set stanjeNaRacunu='".$novoStanje."' where email='".$_SESSION['email']."'";
     mysqli_query($conn, $query) or die("Napaka pri poizvedbi 2!");
