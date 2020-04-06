@@ -259,7 +259,6 @@ $seznamDrzav1 = array(
 		"WF" => "Wallis in Futuna"
 	)
 );
-
 $seznamDrzav2 = array(
 	"Avstralija in Nova Zelandija" => array(
 		"AU" => "Avstralija",

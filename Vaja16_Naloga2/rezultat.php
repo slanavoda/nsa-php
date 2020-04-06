@@ -1,10 +1,7 @@
 <?php
     setcookie('i', '0', time()-1, '/');
-    include('helper.php');
-    $rezultat = 0;
-    foreach ($t as $k => $d) {
-        $rezultat = $rezultat + $d;
-    }
+    $rezultat = $_COOKIE['p'] * 1;
+    setcookie('p', '0', time()-1, '/');
 
     if ($rezultat == 10) {
         echo "Odlično!<br>";
@@ -14,10 +11,6 @@
         echo "Skromno!<br>";
     } else {
         echo "Sramota!<br>";
-    }
-
-    foreach ($t as $k => $d) {
-        unset($t[$k]);
     }
     
     echo '<a href="index.php">Domov</a>'

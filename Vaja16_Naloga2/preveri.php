@@ -3,7 +3,6 @@
     setcookie('i', $poskusi, time()+3600, '/');
     $drzava1 = $_POST['drzava'];
     $celina1 = $_POST['celina'];
-    include('helper.php');
 
     include('seznamDrzav.php');
     foreach ($seznamDrzav1 as $celina => $drzave) {
@@ -11,16 +10,14 @@
             if ($drzava == $drzava1) {
                 if ($celina == $celina1) {
                     echo "Bravo, odgovor je pravilen!";
-                    $t[] = 1;
+                    echo '<br><a href="index.php?p=1">Domov</a>';
                     break;
                 } else {
                     echo "Odgovor NI pravilen!";
-                    $t[] = 0;
+                    echo '<br><a href="index.php">Domov</a>';
                     break;
                 }
             }
         }
     }
-
-    echo '<br><a href="index.php">Domov</a>'
 ?>
