@@ -3,6 +3,8 @@
         header('Location: izpisOsebeForm.php');
     }
 
+    echo '<style>table, th, td { border: 1px solid black; border-collapse: collapse; } </style>';
+
     $conn = mysqli_connect("localhost:3306", "root", "", "baza1") or die("Napaka pri povezovanju na strežnik!");
     $query = "select ime, priimek from oseba order by priimek, ime";
 
