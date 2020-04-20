@@ -18,23 +18,22 @@
     $plus = 0;
 
     foreach ($_POST['loto'] as $stevilka) {
-        $minus = $minus - 5;
+        $minus = $minus + 5;
         if ($stevilka == $st1 || $stevilka == $st2 || $stevilka == $st3 || $stevilka == $st4) {
             $plus = $plus + 7;
         }
     }
 
-    if (($stanje + $minus) < 0) {
+    if (($stanje - $minus) < 0) {
         die('Nimaš zadosti denarja za ta loto listek. Izberi drugačnega, prosim. <br><a href="index.php">Domov</a>');
     }
 
-    $stanje = $stanje + $minus;
+    $stanje = $stanje - $minus;
     $stanje = $stanje + $plus;
 
-    $razlika = $stanje - ( $line['stanjeNaRacunu'] * 1 );
-    $novoStanje = $stanje + $razlika;
+    $razlika = $plus - $minus;
 
-    $query = "update Uporabniki set stanjeNaRacunu='".$novoStanje."' where email='".$_SESSION['email']."'";
+    $query = "update Uporabniki set stanjeNaRacunu='".$stanje."' where email='".$_SESSION['email']."'";
     mysqli_query($conn, $query) or die("Napaka pri poizvedbi 2!");
 
     $query = "insert into Zrebanje values(NULL, '".date("Y-m-d h:i:s")."', ".$st1.", ".$st2.", ".$st3.", ".$st4.")";
